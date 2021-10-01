@@ -55,5 +55,6 @@ public class GoogleSearchSteps {
 		WebElement element = driver.findElement(By.id("search"));
 		Assert.assertNotNull(element);
 		driver.close();
+		driver.quit();
 	}
 }
