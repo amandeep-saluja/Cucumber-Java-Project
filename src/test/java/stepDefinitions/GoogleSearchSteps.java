@@ -13,6 +13,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import junit.framework.Assert;
+import model.SeleniumConstants;
 
 public class GoogleSearchSteps {
 
@@ -23,9 +24,7 @@ public class GoogleSearchSteps {
 
 	@Given("browser is open")
 	public void browser_is_open() {
-		String projectPath = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", projectPath + "/src/test/resources/drivers/chromedriver.exe");
-		driver = new ChromeDriver();
+		driver = SeleniumConstants.driver;
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
