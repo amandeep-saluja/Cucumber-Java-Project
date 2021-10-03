@@ -1,15 +1,15 @@
 package model;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
-import com.google.common.base.Function;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+
+import com.google.common.base.Function;
 
 /**
  * Class that holds all the selenium constants
@@ -41,13 +41,6 @@ public class SeleniumConstants {
 	 * Constant for 15 seconds delay
 	 */
 	public static final Integer VERY_LONG = 15;
-
-	static {
-		String projectPath = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver", projectPath + "/src/test/resources/drivers/chromedriver.exe");
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-	}
 
 	public static WebElement fluentWait(final By locator) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(2))

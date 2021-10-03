@@ -1,14 +1,11 @@
 package stepDefinitions;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import io.cucumber.java.en.And;
@@ -21,7 +18,7 @@ import model.SeleniumConstants;
  * Google Form Step definition class
  *
  */
-public class GoogleFormSteps {
+public class GoogleFormSteps{
 
 	WebDriver driver = null;
 
@@ -136,6 +133,7 @@ public class GoogleFormSteps {
 		} else {
 			Assert.assertNotNull(commentsElement);
 		}
+		Thread.sleep(200);
 	}
 
 	@Then("^user clicks on submit button$")
@@ -156,7 +154,6 @@ public class GoogleFormSteps {
 		WebElement response = SeleniumConstants.fluentWait(RESPONSE_MSG);
 		Assert.assertNotNull(ExpectedConditions.visibilityOf(response));
 		driver.close();
-		driver.quit();
 	}
 
 }

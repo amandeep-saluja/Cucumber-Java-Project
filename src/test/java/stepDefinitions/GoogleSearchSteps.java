@@ -2,17 +2,16 @@ package stepDefinitions;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import junit.framework.Assert;
 import model.SeleniumConstants;
 
 public class GoogleSearchSteps {
@@ -23,7 +22,7 @@ public class GoogleSearchSteps {
 			"body > div.L3eUgb > div.o3j99.ikrT4e.om7nvf > form > div:nth-child(1) > div.A8SBwf > div.RNNXgb > div > div.a4bIc > input");
 
 	@Given("browser is open")
-	public void browser_is_open() {
+	public void browserIsOpen() {
 		driver = SeleniumConstants.driver;
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
@@ -31,12 +30,12 @@ public class GoogleSearchSteps {
 	}
 
 	@And("user is on google search page")
-	public void user_is_on_google_search_page() {
+	public void userIsOnGoogleSearchPage() {
 		driver.navigate().to("https://www.google.com/");
 	}
 
 	@When("user enters a text in search box")
-	public void user_enters_a_text_in_search_box() {
+	public void userEntersATextInSearchBox() {
 		WebElement element = driver.findElement(SEARCH_BOX);
 		element.click();
 		element.clear();
@@ -44,16 +43,14 @@ public class GoogleSearchSteps {
 	}
 
 	@And("hits enter")
-	public void hits_enter() {
+	public void hitsEnter() {
 		WebElement element = driver.findElement(SEARCH_BOX);
 		element.sendKeys(Keys.ENTER);
 	}
 
 	@Then("user is navigated to search results")
-	public void user_is_navigated_to_search_results() {
+	public void userIsNavigatedToSearchResults() {
 		WebElement element = driver.findElement(By.id("search"));
 		Assert.assertNotNull(element);
-		driver.close();
-		driver.quit();
 	}
 }
